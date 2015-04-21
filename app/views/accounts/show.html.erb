@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @account.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @account.last_name %>
+</p>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @account.resume %>
+</p>
+
+<p>
+  <strong>Transcript:</strong>
+  <%= @account.transcript %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @account.address %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @account.experience %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.email %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @account.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @account.user %>
+</p>
+
+<% if not @account.resume.file.nil? %>
+<iframe src=<%= @account.resume.to_s %> width="600" height="780" style="border: none;" allowfullscreen> </iframe>
+<% end %>
+
+<% if not @account.transcript.file.nil? %>
+<iframe src=<%= @account.transcript.to_s %> width="600" height="780" style="border: none;"> </iframe>
+<% end %>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

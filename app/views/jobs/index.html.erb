@@ -1,0 +1,70 @@
+<h1>Job Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <%= paginate @jobs %>
+  <%= search_form_for @q do |f| %>
+    <div class = "field">
+      <%= f.label :title_cont, "Titile Contains" %>
+      <%= f.text_field :title_cont %>
+
+      <%= label_tag :near %>
+      <%= text_field_tag :near, params[:near] %>
+
+      
+      <%= select_tag( :within, options_for_select([["5",5],["10",10],["15",15],["20",20],["30",30],["40",40],["50",50],["75",75],["100",100],["150",150],["200",200]]))  %> miles
+    </div>
+
+    <div class = "actions"> <%= f.submit "search" %> </div>
+  <% end %>
+<p id="notice" style="color: red"><%= notice %></p>
+  <tr class="Header">
+    <th>Title</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Company</th>
+      <th>gpa</th>
+      <th>transcript  &nbsp</th>
+      <th>license &nbsp</th>
+      <th>link &nbsp</th>
+      <th>Created</th>     
+  </tr>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+
+      <tr>
+      
+        <td><%= job.title %>&nbsp &nbsp</td>
+        <td><%= job.address %>&nbsp&nbsp</td>
+        <td><%= truncate(job.description) %>&nbsp &nbsp</td>
+        <td><%= job.company%> &nbsp&nbsp</td>
+        <td><%= job.gpa %>&nbsp &nbsp</td>
+        <td><%= job.transcript %>&nbsp &nbsp</td>
+        <td><%= job.license %>&nbsp &nbsp</td>
+        <td><%= job.link %>&nbsp &nbsp</td>
+        <td><%= job.created_at.strftime("%b %d") %></td>
+        <td><%= link_to 'Show', job %> &nbsp</td>
+
+       <% if can? :update, @job %>
+          <td><%= link_to 'Edit', edit_job_path(job) %>&nbsp</td>
+        <% end %>
+        <% if can? :destroy, @job %>
+          <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>  
+        
+        
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+<br>
+
+<%= link_to 'New Job', new_job_path %>

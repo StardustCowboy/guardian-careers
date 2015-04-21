@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<table>
+<th>Cover Letter</th>
+ 	 <tr>
+		<td> <%=simple_format(@job_application.cover_letter) %></td>
+	</tr>
+
+</table>
+<p>
+  <strong>First name:</strong>
+  <%= @job_application.user.account.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @job_application.user.account.last_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @job_application.user.account.address %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @job_application.user.account.experience %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @job_application.user.account.email %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @job_application.user.account.description %>
+</p>
+
+<% if @job_application.user.account.resume %>
+<iframe src=<%= @job_application.user.account.resume.to_s %> width="600" height="780" style="border: none;" allowfullscreen> </iframe>
+<% end %>
+
+<% if @job_application.user.account.transcript %>
+<iframe src=<%= @job_application.user.account.transcript.to_s %> width="600" height="780" style="border: none;"> </iframe>
+<% end %>
+<br>
+<%= link_to 'New Job application', new_job_application_path %>
+<%= link_to 'Edit', edit_job_application_path(@job_application) %> |
+<%= link_to 'Back', job_applications_path %>
