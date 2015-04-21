@@ -40,6 +40,9 @@ gem 'carrierwave'
 
 #PostgreSQL
 gem 'pg'
+
+#heroku gem
+gem 'rails_12factor'
 #----------------GEMS IVE ADDED-----------------------------------------
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -52,6 +55,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
+
+ ruby "2.1.5"
 
 # Use unicorn as the app server
 # gem 'unicorn'
