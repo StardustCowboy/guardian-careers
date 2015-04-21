@@ -37,6 +37,9 @@ gem 'figaro'
 
 #uploading files
 gem 'carrierwave'
+
+#PostgreSQL
+gem 'pg'
 #----------------GEMS IVE ADDED-----------------------------------------
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
